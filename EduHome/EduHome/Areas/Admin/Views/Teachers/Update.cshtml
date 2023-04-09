@@ -1,0 +1,33 @@
+﻿@model Teacher
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Update Teacher</h5>
+
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3 form-group">
+                        <label asp-for="Name" class="form-label">Full Name</label>
+                        <input asp-for="Name" type="text" class="form-control" />
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Role" class="form-label">Role</label>
+                        <input asp-for="Role" type="text" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Image" class="form-label">Image</label>
+                        <input asp-for="Image" type="text" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a asp-action="Index" class="btn btn-secondary">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

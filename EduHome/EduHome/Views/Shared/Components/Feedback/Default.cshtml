@@ -1,0 +1,18 @@
+﻿@model List<Feedback>
+
+  @foreach(Feedback feedback in Model){
+       <div class="col-md-8 col-md-offset-2 col-sm-12">
+    <div class="single-testimonial">
+        <div class="testimonial-info">
+            <div class="testimonial-img">
+                <img src="~/img/testimonial/@feedback.Image" alt="testimonial">
+            </div>
+            <div class="testimonial-content">
+                <p>@feedback.Description</p>
+                <h4>@feedback.FullName</h4>
+                <h5>@feedback.Role</h5>
+            </div>
+        </div>
+    </div>
+    </div>
+  }
