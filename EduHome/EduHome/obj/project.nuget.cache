@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "InkVhdaAj8llVVk5eeJGO9a7Fa2lpnmn4DzMcxTkEcFBrnvbJfcn3/6QHhmqKkHM303TO++Q+Xk87+t6DYHifg==",
+  "dgSpecHash": "IJqsl1RtnyokpOi4zOu+XRSnD2fcfeiBBFUapXtWpSv9h7oAPFIv5QYbJcjGQDHrX/VAkdmtH36VA7usef8b/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Esma\\Desktop\\EduHome\\EduHome\\EduHome.csproj",
+  "projectFilePath": "C:\\Users\\Esma\\Desktop\\EduHomee\\EduHome\\EduHome\\EduHome.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Esma\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Esma\\.nuget\\packages\\jquery\\3.6.4\\jquery.3.6.4.nupkg.sha512",

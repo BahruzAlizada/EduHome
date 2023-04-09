@@ -77,6 +77,21 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Feedback dbfeedback = await _db.Feedbacks.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbfeedback == null)
+            {
+                return BadRequest();
+            }
+
+            return View();
+        }
+
         public async Task<IActionResult> Activity(int? id)
         {
             if(id == null)
