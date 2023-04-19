@@ -18,6 +18,7 @@ namespace EduHome.DAL
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<TeacherDetail> TeacherDetails { get; set; }
       
 
     }
