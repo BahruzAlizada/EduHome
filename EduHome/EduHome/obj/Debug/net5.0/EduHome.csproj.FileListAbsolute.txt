@@ -508,3 +508,8 @@ C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\bin\Debug\net5.0\Microsoft.AspNet
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Notices\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Notices\Create.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Notices\Update.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Notices\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\Notices\Default.cshtml.g.cs

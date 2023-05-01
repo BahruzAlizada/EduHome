@@ -20,6 +20,7 @@ namespace EduHome.DAL
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
+        public DbSet<Notice> Notices { get; set; }
       
 
     }

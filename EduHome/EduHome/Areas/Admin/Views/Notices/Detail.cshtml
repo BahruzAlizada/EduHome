@@ -1,0 +1,5 @@
+﻿@model Notice
+
+<h2>@Model.CreatedTime.ToString("dd MMMM, yyyy")</h2>
+<p>@Model.Description</p>
+<a class="btn btn-secondary" asp-action="Index">Go Back</a>
