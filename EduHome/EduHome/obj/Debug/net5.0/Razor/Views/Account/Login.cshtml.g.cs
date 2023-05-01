@@ -33,8 +33,15 @@ using EduHome.Models.HomeVM;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\Views\_ViewImports.cshtml"
+using EduHome.ViewsModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d58e6384d9a3dc5614ef56220e6e0f42e34a6687", @"/Views/Account/Login.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8763a6471ce0dd39b6a4d2ca19945a3f6d6a8a95", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b12595893c504d51562e64b077b5eee4604670a3", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Account_Login : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -96,7 +103,7 @@ using EduHome.Models.HomeVM;
                         </div>
       ");
             WriteLiteral("                  <div class=\"login-form\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d58e6384d9a3dc5614ef56220e6e0f42e34a66875221", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d58e6384d9a3dc5614ef56220e6e0f42e34a66875401", async() => {
                 WriteLiteral(@"
                                 <input type=""text"" name=""user-name"" placeholder=""Username"">
                                 <input type=""password"" name=""user-password"" placeholder=""Password"">

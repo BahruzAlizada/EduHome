@@ -1,7 +1,9 @@
 using EduHome.DAL;
+using EduHome.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +28,16 @@ namespace EduHome
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddIdentity<AppUser, IdentityRole>(Identityoptions =>
+            {
+                Identityoptions.User.RequireUniqueEmail=true;
+                Identityoptions.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._";
+                Identityoptions.Password.RequiredLength = 8;
+                Identityoptions.Password.RequireNonAlphanumeric = false;
+                Identityoptions.Lockout.AllowedForNewUsers = true;
+                Identityoptions.Lockout.MaxFailedAccessAttempts = 5;
+                Identityoptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();   
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(_configuration.GetConnectionString("Default"));
