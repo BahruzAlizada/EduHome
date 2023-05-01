@@ -21,6 +21,7 @@ namespace EduHome.DAL
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
         public DbSet<Notice> Notices { get; set; }
+        public DbSet<Event> Events { get; set; }
       
 
     }

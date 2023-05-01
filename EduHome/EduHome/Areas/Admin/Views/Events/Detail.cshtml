@@ -1,0 +1,9 @@
+﻿@model Event
+
+<img src="~/img/event/@Model.Image" />
+<h2>@Model.Name</h2>
+<p>@Model.Location</p>
+<p>@Model.CreatedTime.ToString("dd MMMM")</p>
+<p>@Model.StartTime.ToShortTimeString()</p>
+<p>@Model.EndTime.ToShortTimeString()</p>
+<a class="btn btn-secondary" asp-action="Index">Go Back</a>

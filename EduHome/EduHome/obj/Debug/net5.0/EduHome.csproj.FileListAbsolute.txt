@@ -513,3 +513,7 @@ C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admi
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Notices\Update.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Notices\Detail.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\Notices\Default.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Events\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Events\Create.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Events\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Events\Update.cshtml.g.cs
