@@ -20,9 +20,10 @@ namespace EduHome.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Event> events = await _db.Events.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Take(4).ToListAsync();
+            return View(events);
         }
 
       
