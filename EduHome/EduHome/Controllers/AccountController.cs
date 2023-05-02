@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EduHome.ViewsModel;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace EduHome.Controllers
 {
@@ -12,5 +14,13 @@ namespace EduHome.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+
+        //public async Task<IActionResult> Register(RegisterVM registerVM)
+        //{
+
+        //}
     }
 }

@@ -1,0 +1,7 @@
+﻿@model Blog
+
+<img src="~/img/blog/@Model.Image" />
+<h2>@Model.Title</h2>
+<p>@Model.By</p>
+<p>@Model.CreatedTime.ToString("dd MMMM yyyy")</p>
+<a asp-action="Index" class="btn btn-secondary">Go Back</a>
