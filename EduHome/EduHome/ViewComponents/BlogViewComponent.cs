@@ -22,11 +22,11 @@ namespace EduHome.ViewComponents
             List<Blog> blogs = new List<Blog>();
             if (take == 0)
             {
-                blogs = await _db.Blogs.OrderByDescending(x=>x.Id).ToListAsync();
+                blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).ToListAsync();
             }
             else
             {
-                blogs = await _db.Blogs.OrderByDescending(x => x.Id).Take(take).ToListAsync();
+                blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(take).ToListAsync();
             }
               
           

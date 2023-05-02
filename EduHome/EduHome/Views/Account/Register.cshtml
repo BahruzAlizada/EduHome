@@ -26,7 +26,7 @@
                     <div class="login-form-container">
                         <div class="login-text">
                             <h2>sign up</h2>
-                            <span>Please login using account detail bellow.</span>
+                           <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                         </div>
                         <div class="login-form">
                             <form method="post">
@@ -72,3 +72,7 @@
     </div>
 </div>
 <!-- Register end -->
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
