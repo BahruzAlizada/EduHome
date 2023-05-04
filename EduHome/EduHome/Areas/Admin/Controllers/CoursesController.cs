@@ -38,7 +38,7 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(Course course)
         {
-            bool isExist = await _db.Courses.AnyAsync(x => x.Name == course.Name);
+            bool isExist = await _db.Courses.Include(x=>x.CourseDetail).AnyAsync(x => x.Name == course.Name);
             if (isExist)
             {
                 ModelState.AddModelError("Name", "This Course already exist !");
@@ -78,7 +78,7 @@ namespace EduHome.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Course dbcourse = await _db.Courses.FirstOrDefaultAsync(x=>x.Id == id);
+            Course dbcourse = await _db.Courses.Include(x=>x.CourseDetail).FirstOrDefaultAsync(x=>x.Id == id);
             if (dbcourse == null)
             {
                 return BadRequest();
@@ -96,7 +96,7 @@ namespace EduHome.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Course dbcourse = await _db.Courses.FirstOrDefaultAsync(x => x.Id == id);
+            Course dbcourse = await _db.Courses.Include(x=>x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbcourse == null)
             {
                 return BadRequest();
@@ -139,6 +139,18 @@ namespace EduHome.Areas.Admin.Controllers
 
             dbcourse.Name = course.Name;
             dbcourse.Description=course.Description;
+
+            dbcourse.CourseDetail.AboutCourse = course.CourseDetail.AboutCourse;
+            dbcourse.CourseDetail.Apply = course.CourseDetail.Apply;
+            dbcourse.CourseDetail.Certification = course.CourseDetail.Certification;
+            dbcourse.CourseDetail.Starts= course.CourseDetail.Starts;
+            dbcourse.CourseDetail.Duration = course.CourseDetail.Duration;
+            dbcourse.CourseDetail.ClassDuration = course.CourseDetail.ClassDuration;
+            dbcourse.CourseDetail.SkillLevel = course.CourseDetail.SkillLevel;
+            dbcourse.CourseDetail.Language = course.CourseDetail.Language;
+            dbcourse.CourseDetail.Student = course.CourseDetail.Student;
+            dbcourse.CourseDetail.CourseFee = course.CourseDetail.CourseFee;
+
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -149,7 +161,7 @@ namespace EduHome.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Course dbcourse = await _db.Courses.FirstOrDefaultAsync(x => x.Id == id);
+            Course dbcourse = await _db.Courses.Include(x => x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
             if(dbcourse== null)
             {
                 return BadRequest();

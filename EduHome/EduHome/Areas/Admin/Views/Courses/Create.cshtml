@@ -28,6 +28,66 @@
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
 
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.AboutCourse" class="form-label">About Course</label>
+                        <textarea asp-for="CourseDetail.AboutCourse" class="form-control"></textarea>
+                        <span asp-validation-for="CourseDetail.AboutCourse" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.Apply" class="form-label">Apply Course</label>
+                        <textarea asp-for="CourseDetail.Apply" class="form-control"></textarea>
+                        <span asp-validation-for="CourseDetail.Apply" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.Certification" class="form-label">Certification</label>
+                        <textarea asp-for="CourseDetail.Certification" class="form-control"></textarea>
+                        <span asp-validation-for="CourseDetail.Certification" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.Starts" class="form-label">Course Start</label>
+                        <input asp-for="CourseDetail.Starts" type="date" class="form-control" />
+                        <span asp-validation-for="CourseDetail.Starts" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.Duration" class="form-label">Course Duration</label>
+                        <input asp-for="CourseDetail.Duration" class="form-control"/>
+                        <span asp-validation-for="CourseDetail.Duration" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.ClassDuration" class="form-label">Class Duration</label>
+                        <input asp-for="CourseDetail.ClassDuration" class="form-control"/>
+                        <span asp-validation-for="CourseDetail.ClassDuration" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.SkillLevel" class="form-label">Skill Level</label>
+                        <input asp-for="CourseDetail.SkillLevel" class="form-control"/>
+                        <span asp-validation-for="CourseDetail.SkillLevel" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.Language" class="form-label">language</label>
+                        <input asp-for="CourseDetail.Language" class="form-control" />
+                        <span asp-validation-for="CourseDetail.Language" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.Student" class="form-label">Student</label>
+                        <input asp-for="CourseDetail.Student" class="form-control" />
+                        <span asp-validation-for="CourseDetail.Student" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CourseDetail.CourseFee" class="form-label">Course Fee</label>
+                        <input asp-for="CourseDetail.CourseFee" class="form-control" />
+                        <span asp-validation-for="CourseDetail.CourseFee" class="text-danger"></span>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a asp-action="Index" class="btn btn-secondary">Go Back</a>
                 </form>

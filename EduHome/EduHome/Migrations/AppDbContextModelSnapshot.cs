@@ -202,6 +202,54 @@ namespace EduHome.Migrations
                     b.ToTable("Courses");
                 });
 
+            modelBuilder.Entity("EduHome.Models.CourseDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AboutCourse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Apply")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Certification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ClassDuration")
+                        .HasColumnType("float");
+
+                    b.Property<int>("CourseFee")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Duration")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SkillLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Starts")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Student")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId")
+                        .IsUnique();
+
+                    b.ToTable("CourseDetails");
+                });
+
             modelBuilder.Entity("EduHome.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -516,6 +564,17 @@ namespace EduHome.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EduHome.Models.CourseDetail", b =>
+                {
+                    b.HasOne("EduHome.Models.Course", "Course")
+                        .WithOne("CourseDetail")
+                        .HasForeignKey("EduHome.Models.CourseDetail", "CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+                });
+
             modelBuilder.Entity("EduHome.Models.TeacherDetail", b =>
                 {
                     b.HasOne("EduHome.Models.Teacher", "Teacher")
@@ -576,6 +635,11 @@ namespace EduHome.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EduHome.Models.Course", b =>
+                {
+                    b.Navigation("CourseDetail");
                 });
 
             modelBuilder.Entity("EduHome.Models.Teacher", b =>
