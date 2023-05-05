@@ -89,17 +89,17 @@
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="single-event mb-35">
                         <div class="event-img">
-                            <a href="event-details.html"><img src="~/img/event/@events.Image" style="height:197px; width:214px; object-fit:cover;" alt="event"></a>
+                            <a asp-controller="Events" asp-action="Detail" asp-route-id="@events.Id"><img src="~/img/event/@events.Image" style="height:197px; width:214px; object-fit:cover;" alt="event"></a>
                         </div>
                         <div class="event-content text-left">
                             <h3>@events.CreatedTime.ToString("dd MMMM yyyy")</h3>
-                            <h4><a href="event-details.html">@events.Name</a></h4>
+                            <h4><a asp-controller="Events" asp-action="Detail" asp-route-id="@events.Id">@events.Name</a></h4>
                             <ul>
                                 <li><i class="fa fa-clock-o"></i>@events.StartTime.ToShortTimeString() - @events.EndTime.ToShortTimeString()</li>
                                 <li><i class="fa fa-map-marker"></i>@events.Location</li>
                             </ul>
                             <div class="event-content-right">
-                                <a class="default-btn" href="event-details.html">join now</a>
+                                <a class="default-btn" asp-controller="Events" asp-action="Detail" asp-route-id="@events.Id">join now</a>
                             </div>
                         </div>
                     </div>

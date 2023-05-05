@@ -23,5 +23,16 @@ namespace EduHome.Controllers
 
             return View(events);
         }
+
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            Event dbevent = await _db.Events.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbevent == null)
+                return BadRequest();
+
+            return View(dbevent);
+        }
     }
 }

@@ -19,13 +19,16 @@ namespace EduHome.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int take)
         {
+            
+           
+
             List<Blog> blogs = new List<Blog>();
             if (take == 0)
             {
-                blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).ToListAsync();
+                blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Take(9).ToListAsync();
             }
             else
-            {
+            { 
                 blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(take).ToListAsync();
             }
               
