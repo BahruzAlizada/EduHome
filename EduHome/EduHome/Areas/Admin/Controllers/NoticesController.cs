@@ -26,7 +26,7 @@ namespace EduHome.Areas.Admin.Controllers
             return View(notices);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }

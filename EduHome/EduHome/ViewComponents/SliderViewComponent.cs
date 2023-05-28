@@ -17,9 +17,9 @@ namespace EduHome.ViewComponents
             _db = db;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int take)
+        public async Task<IViewComponentResult> InvokeAsync()
         { 
-            List <Slider> sliders = await _db.Sliders.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Take(take).ToListAsync();
+            List <Slider> sliders = await _db.Sliders.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Take(3).ToListAsync();
             return View(sliders);
         }
 

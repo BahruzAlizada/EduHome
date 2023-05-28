@@ -28,20 +28,13 @@ using EduHome.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\Views\_ViewImports.cshtml"
-using EduHome.Models.HomeVM;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\Views\_ViewImports.cshtml"
 using EduHome.ViewsModel;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1bcd4c5a4f8b08375c2640ddffc3302f163314a5", @"/Views/Shared/Components/Courses/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b12595893c504d51562e64b077b5eee4604670a3", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d86e3e9ec1beb64219907f791c2b57482ae1f6cd", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components_Courses_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Course>>
     #nullable disable
@@ -85,9 +78,9 @@ using EduHome.ViewsModel;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"col-md-4 col-sm-6 col-xs-12\">\r\n        <div class=\"single-course mb-70\">\r\n            <div class=\"course-img\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bcd4c5a4f8b08375c2640ddffc3302f163314a55422", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bcd4c5a4f8b08375c2640ddffc3302f163314a55239", async() => {
                 WriteLiteral("\r\n                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1bcd4c5a4f8b08375c2640ddffc3302f163314a55697", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1bcd4c5a4f8b08375c2640ddffc3302f163314a55514", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -142,7 +135,7 @@ AddHtmlAttributeValue("", 324, course.Image, 324, 13, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </div>\r\n            <div class=\"course-content\">\r\n                <h3>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bcd4c5a4f8b08375c2640ddffc3302f163314a59726", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bcd4c5a4f8b08375c2640ddffc3302f163314a59543", async() => {
 #nullable restore
 #line 16 "C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\Views\Shared\Components\Courses\Default.cshtml"
                                                                                          Write(course.Name);
@@ -189,7 +182,7 @@ AddHtmlAttributeValue("", 324, course.Image, 324, 13, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bcd4c5a4f8b08375c2640ddffc3302f163314a512685", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bcd4c5a4f8b08375c2640ddffc3302f163314a512502", async() => {
                 WriteLiteral("read more");
             }
             );

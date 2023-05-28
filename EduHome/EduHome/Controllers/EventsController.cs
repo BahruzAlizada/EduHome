@@ -17,11 +17,22 @@ namespace EduHome.Controllers
             _db = db;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            List<Event> events = await _db.Events.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).ToListAsync();
+            List<Event> events = new List<Event>();
 
-            return View(events);
+            if (!string.IsNullOrEmpty(search))
+            {
+                events = await _db.Events.Where(x => x.Name.Contains(search)).ToListAsync();
+                return View(events);
+            }
+            else
+            {
+                events = await _db.Events.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).ToListAsync();
+
+                return View(events);
+            }
+             
         }
 
         public async Task<IActionResult> Detail(int? id)

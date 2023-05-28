@@ -23,7 +23,8 @@ namespace EduHome.DAL
         public DbSet<Notice> Notices { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<CourseDetail> CourseDetails { get; set; }
-      
+        public DbSet<Form> Forms { get; set; }
+        public DbSet<BlogDetail> BlogDetails { get; set; }
 
     }
 }

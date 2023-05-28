@@ -19,21 +19,9 @@ namespace EduHome.ViewComponents
         }
 
         public async Task<IViewComponentResult> InvokeAsync(int take)
-        {
-            List<Course> courses = new List<Course>();
-
-            if (take == 0)
-            {
-                courses = await _db.Courses.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).ToListAsync();
-            }
-            else
-            {
-                courses = await _db.Courses.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(take).ToListAsync();
-            }
-              
-  
-               
-            return View(courses);
+        {     
+                List<Course> courses = courses = await _db.Courses.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).Take(3).ToListAsync();
+                return View(courses); 
         }
 
     }

@@ -29,7 +29,7 @@ namespace EduHome.Areas.Admin.Controllers
             return View(feedbacks);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }

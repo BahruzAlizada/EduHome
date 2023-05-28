@@ -17,11 +17,9 @@ namespace EduHome.ViewComponents
             _db= db;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int take)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            List<Feedback> feedbacks = new List<Feedback>();
-
-            feedbacks = await _db.Feedbacks.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(take).ToListAsync();
+            List<Feedback> feedbacks = feedbacks = await _db.Feedbacks.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(4).ToListAsync();
             return View(feedbacks);
         }
 

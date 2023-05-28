@@ -2,6 +2,7 @@
 using EduHome.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,22 +18,10 @@ namespace EduHome.ViewComponents
             _db = db;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int take)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            
-           
+            List<Blog> blogs  = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(3).ToListAsync();
 
-            List<Blog> blogs = new List<Blog>();
-            if (take == 0)
-            {
-                blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Take(9).ToListAsync();
-            }
-            else
-            { 
-                blogs = await _db.Blogs.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(take).ToListAsync();
-            }
-              
-          
             return View(blogs);
         }
 

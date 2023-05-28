@@ -14,5 +14,15 @@ namespace EduHome.Models
         public IFormFile Photo { get; set; }
         public DateTime CreatedTime { get; set; }
         public bool IsDeactive { get; set; }
+        public BlogDetail BlogDetail { get; set; }
+    }
+
+    public class BlogDetail
+    {
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public Blog Blog { get; set; }
+        [ForeignKey("Blog")]
+        public int BlogId { get; set; }
     }
 }

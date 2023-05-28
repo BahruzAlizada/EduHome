@@ -33,7 +33,7 @@ namespace EduHome.Areas.Admin.Controllers
         }
 
         #region Create
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -82,7 +82,7 @@ namespace EduHome.Areas.Admin.Controllers
             string folder = Path.Combine(_env.WebRootPath, "img", "blog");
             blog.Image = await blog.Photo.SaveFileAsync(folder);
             #endregion
-
+      
             await _db.Blogs.AddAsync(blog);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -94,7 +94,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Blog dbblog = await _db.Blogs.FirstOrDefaultAsync(x => x.Id == id);
+            Blog dbblog = await _db.Blogs.Include(x=>x.BlogDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbblog == null)
                 return BadRequest();
 
@@ -108,7 +108,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Blog dbblog = await _db.Blogs.FirstOrDefaultAsync(x => x.Id == id);
+            Blog dbblog = await _db.Blogs.Include(x=>x.BlogDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbblog == null)
                 return BadRequest();
 
@@ -145,6 +145,7 @@ namespace EduHome.Areas.Admin.Controllers
             }
             #endregion
 
+            dbblog.BlogDetail.Description = blog.BlogDetail.Description;
             dbblog.Title = blog.Title;
             dbblog.By = blog.By;
 

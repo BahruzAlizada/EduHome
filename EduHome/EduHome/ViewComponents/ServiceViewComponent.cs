@@ -17,18 +17,9 @@ namespace EduHome.ViewComponents
             _db = db;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int take)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            List<Service> services = new List<Service>();
-            if(take==0)
-            {
-                services = await _db.Services.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).ToListAsync();
-            }
-            else
-            {
-                services = await _db.Services.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(take).ToListAsync();
-            }
-          
+            List<Service> services = services = await _db.Services.Where(x=>!x.IsDeactive).OrderByDescending(x => x.Id).Take(3).ToListAsync();
             return View(services);
         }
 

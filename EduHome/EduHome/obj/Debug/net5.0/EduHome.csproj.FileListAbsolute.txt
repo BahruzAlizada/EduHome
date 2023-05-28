@@ -527,3 +527,5 @@ C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admi
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Create.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Update.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\ResetPassword.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Blogs\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\BlogDetailRight\Default.cshtml.g.cs

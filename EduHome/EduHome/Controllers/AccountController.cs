@@ -21,7 +21,7 @@ namespace EduHome.Controllers
         }
 
         #region Login
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             return View();
         }

@@ -31,7 +31,7 @@ namespace EduHome.Areas.Admin.Controllers
             return View(events);
         }
 
-       public async Task<IActionResult> Create()
+       public IActionResult Create()
        {
             return View();
        }

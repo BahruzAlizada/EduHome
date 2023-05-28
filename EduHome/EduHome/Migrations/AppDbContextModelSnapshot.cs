@@ -177,6 +177,27 @@ namespace EduHome.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("EduHome.Models.BlogDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId")
+                        .IsUnique();
+
+                    b.ToTable("BlogDetails");
+                });
+
             modelBuilder.Entity("EduHome.Models.Course", b =>
                 {
                     b.Property<int>("Id")
@@ -308,6 +329,40 @@ namespace EduHome.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Feedbacks");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Form", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isDeactive")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Forms");
                 });
 
             modelBuilder.Entity("EduHome.Models.Notice", b =>
@@ -564,6 +619,17 @@ namespace EduHome.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EduHome.Models.BlogDetail", b =>
+                {
+                    b.HasOne("EduHome.Models.Blog", "Blog")
+                        .WithOne("BlogDetail")
+                        .HasForeignKey("EduHome.Models.BlogDetail", "BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("EduHome.Models.CourseDetail", b =>
                 {
                     b.HasOne("EduHome.Models.Course", "Course")
@@ -635,6 +701,11 @@ namespace EduHome.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EduHome.Models.Blog", b =>
+                {
+                    b.Navigation("BlogDetail");
                 });
 
             modelBuilder.Entity("EduHome.Models.Course", b =>
