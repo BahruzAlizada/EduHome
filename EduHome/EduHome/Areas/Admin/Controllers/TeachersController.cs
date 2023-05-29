@@ -24,15 +24,18 @@ namespace EduHome.Areas.Admin.Controllers
             _env = env;
         }
 
+        #region Index
         public async Task<IActionResult> Index()
         {
-            List<Teacher> teachers = await _db.Teachers.ToListAsync();
+            List<Teacher> teachers = await _db.Teachers.Include(x => x.TeacherDetail).ToListAsync();
             return View(teachers);
         }
+        #endregion
 
+        #region Create
         public IActionResult Create()
         {
-            
+
             return View();
         }
 
@@ -46,6 +49,7 @@ namespace EduHome.Areas.Admin.Controllers
                 ModelState.AddModelError("Name", "Teacher name can not be null");
                 return View();
             }
+
             #region Photo
             if (teacher.Photo == null)
             {
@@ -67,7 +71,7 @@ namespace EduHome.Areas.Admin.Controllers
 
 
             string folder = Path.Combine(_env.WebRootPath, "img", "teacher");
-            teacher.Image =await teacher.Photo.SaveFileAsync(folder);
+            teacher.Image = await teacher.Photo.SaveFileAsync(folder);
 
             #endregion
 
@@ -75,68 +79,107 @@ namespace EduHome.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
 
+        #region Update
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
-            Teacher dbteacher = await _db.Teachers.FirstOrDefaultAsync(x=>x.Id==id);
-            if(dbteacher == null)
-            {
+            Teacher dbteacher = await _db.Teachers.Include(x => x.TeacherDetail).FirstOrDefaultAsync(x => x.Id == id);
+            if (dbteacher == null)
                 return BadRequest();
-            }
+
             return View(dbteacher);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Update(int? id,Teacher teacher)
+        public async Task<IActionResult> Update(int? id, Teacher teacher)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
-            Teacher dbteacher = await _db.Teachers.FirstOrDefaultAsync(x => x.Id == id);
+            Teacher dbteacher = await _db.Teachers.Include(x => x.TeacherDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbteacher == null)
-            {
                 return BadRequest();
-            }
-            
-            dbteacher.Name= teacher.Name;
-            dbteacher.Role = teacher.Role;
-            dbteacher.Image=teacher.Image;
 
+            #region Image
+            if(teacher.Photo!=null)
+            {
+                if (!teacher.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Select image type");
+                    return View();
+                }
+                if (teacher.Photo.IsOlder256Kb())
+                {
+                    ModelState.AddModelError("Photo", "Max 256Kb");
+                    return View();
+                }
+                string folder = Path.Combine(_env.WebRootPath, "img", "teacher");
+                teacher.Image = await teacher.Photo.SaveFileAsync(folder);
+                string path = Path.Combine(_env.WebRootPath, folder, dbteacher.Image);
+                if (System.IO.File.Exists(path))
+                    System.IO.File.Delete(path);
+                dbteacher.Image = teacher.Image;
+            }
+            #endregion
+
+            dbteacher.Name = teacher.Name;
+            dbteacher.Role = teacher.Role;
+            dbteacher.TeacherDetail.Description = teacher.TeacherDetail.Description;
+            dbteacher.TeacherDetail.Degree = teacher.TeacherDetail.Degree;
+            dbteacher.TeacherDetail.Experience = teacher.TeacherDetail.Experience;
+            dbteacher.TeacherDetail.Hobby = teacher.TeacherDetail.Experience;
+            dbteacher.TeacherDetail.Faculty=teacher.TeacherDetail.Faculty;
+            dbteacher.TeacherDetail.Email = teacher.TeacherDetail.Email;
+            dbteacher.TeacherDetail.Phone = teacher.TeacherDetail.Phone;
+            dbteacher.TeacherDetail.Language = teacher.TeacherDetail.Language;
+            dbteacher.TeacherDetail.TeamLeader = teacher.TeacherDetail.TeamLeader;
+            dbteacher.TeacherDetail.Development = teacher.TeacherDetail.Development;
+            dbteacher.TeacherDetail.Design = teacher.TeacherDetail.Design;
+            dbteacher.TeacherDetail.Innovation = teacher.TeacherDetail.Innovation;
+            dbteacher.TeacherDetail.Communication = teacher.TeacherDetail.Communication;
+
+                
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
 
         }
+        #endregion
 
+        #region Detail
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            Teacher dbteacher = await _db.Teachers.Include(x=>x.TeacherDetail).FirstOrDefaultAsync(x => x.Id == id);
+            if (dbteacher == null)
+                return BadRequest();
+
+            return View(dbteacher);
+        }
+        #endregion
+
+        #region Activity
         public async Task<IActionResult> Activity(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
             Teacher dbteacher = await _db.Teachers.FirstOrDefaultAsync(x => x.Id == id);
             if (dbteacher == null)
-            {
                 return BadRequest();
-            }
 
             if (dbteacher.IsDeactive)
-            {
                 dbteacher.IsDeactive = false;
-            }
             else
-            {
                 dbteacher.IsDeactive = true;
-            }
+
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
 
     }
 }

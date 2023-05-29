@@ -46,6 +46,12 @@
                         <span asp-validation-for="EndTime" class="text-danger"></span>
                     </div>
 
+                    <div class="mb-3 form-group">
+                        <label asp-for="EventDetail.Description" class="form-label">Description</label>
+                        <textarea id="editor" asp-for="EventDetail.Description" class="form-control"></textarea>
+                        <span asp-validation-for="EventDetail.Description" class="text-danger"></span>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a asp-action="Index" class="btn btn-secondary">Go Back</a>
                 </form>
@@ -55,4 +61,12 @@
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 }

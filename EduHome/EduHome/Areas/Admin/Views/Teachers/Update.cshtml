@@ -4,24 +4,117 @@
     <div class="col-8">
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Update Teacher</h5>
-
+                <h5 class="mb-0">Create Teacher</h5>
             </div>
             <div class="card-body">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Photo" class="form-label">Photo</label>
+                        <input asp-for="Photo" accept="image/*" class="form-control" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
                     <div class="mb-3 form-group">
                         <label asp-for="Name" class="form-label">Full Name</label>
                         <input asp-for="Name" type="text" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3 form-group">
                         <label asp-for="Role" class="form-label">Role</label>
                         <input asp-for="Role" type="text" class="form-control" />
+                        <span asp-validation-for="Role" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
-                        <label asp-for="Image" class="form-label">Image</label>
-                        <input asp-for="Image" type="text" class="form-control" />
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Description" class="form-label">Description</label>
+                        <textarea id="editor" asp-for="TeacherDetail.Description" class="form-control"></textarea>
+                        <span asp-validation-for="TeacherDetail.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Degree" class="form-label">Degree</label>
+                        <input asp-for="TeacherDetail.Degree" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Degree" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Degree" class="form-label">Degree</label>
+                        <input asp-for="TeacherDetail.Degree" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Degree" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Experience" class="form-label">Experience</label>
+                        <input asp-for="TeacherDetail.Experience" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Experience" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Experience" class="form-label">Experience</label>
+                        <input asp-for="TeacherDetail.Experience" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Experience" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Hobby" class="form-label">Hobby</label>
+                        <input asp-for="TeacherDetail.Hobby" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Hobby" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Faculty" class="form-label">Faculty</label>
+                        <input asp-for="TeacherDetail.Faculty" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Faculty" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Email" class="form-label">Email</label>
+                        <input asp-for="TeacherDetail.Email" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Phone" class="form-label">Phone</label>
+                        <input asp-for="TeacherDetail.Phone" class="form-control" />
+                        <span asp-validation-for="TeacherDetail.Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Language" class="form-label">Language</label>
+                        <input asp-for="TeacherDetail.Language" class="form-control" placeholder="100%" />
+                        <span asp-validation-for="TeacherDetail.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.TeamLeader" class="form-label">TeamLeader</label>
+                        <input asp-for="TeacherDetail.TeamLeader" class="form-control" placeholder="100%" />
+                        <span asp-validation-for="TeacherDetail.TeamLeader" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Development" class="form-label">Development</label>
+                        <input asp-for="TeacherDetail.Development" class="form-control" placeholder="100%" />
+                        <span asp-validation-for="TeacherDetail.Development" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Design" class="form-label">Design</label>
+                        <input asp-for="TeacherDetail.Design" class="form-control" placeholder="100%" />
+                        <span asp-validation-for="TeacherDetail.Design" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Innovation" class="form-label">Innovation</label>
+                        <input asp-for="TeacherDetail.Innovation" class="form-control" placeholder="100%" />
+                        <span asp-validation-for="TeacherDetail.Innovation" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="TeacherDetail.Communication" class="form-label">Communication</label>
+                        <input asp-for="TeacherDetail.Communication" class="form-control" placeholder="100%" />
+                        <span asp-validation-for="TeacherDetail.Communication" class="text-danger"></span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -31,3 +124,15 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial">
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+    }

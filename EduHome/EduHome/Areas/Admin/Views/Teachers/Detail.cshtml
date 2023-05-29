@@ -1,0 +1,22 @@
+﻿@model Teacher
+
+<img src="~/img/teacher/@Model.Image" style="height:300px; width:280px;" />
+<h1>@Model.Name</h1>
+<p>@Model.Role</p>
+<p>@Html.Raw(Model.TeacherDetail.Description)</p>
+<p>@Model.TeacherDetail.Degree
+
+<p>@Model.TeacherDetail.Experience</p>
+<p>@Model.TeacherDetail.Hobby</p>
+<p>@Model.TeacherDetail.Faculty</p>
+<p>@Model.TeacherDetail.Email</p>
+<p>Model.TeacherDetail.Phone</p>
+<p>Language - @Model.TeacherDetail.Language%</p>
+<p>Team Leader - @Model.TeacherDetail.TeamLeader%</p>
+<p>Development - @Model.TeacherDetail.Development%</p>
+<p>Design - @Model.TeacherDetail.Design%</p>
+<p>Innovation - @Model.TeacherDetail.Innovation%</p>
+<p>Communication - @Model.TeacherDetail.Communication%</p>
+
+
+<a class="btn btn-secondary" asp-action="Index">Go Back</a>

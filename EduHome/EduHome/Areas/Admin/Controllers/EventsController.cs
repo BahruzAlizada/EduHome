@@ -27,7 +27,7 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Event> events = await _db.Events.ToListAsync();
+            List<Event> events = await _db.Events.Include(x=>x.EventDetail).Include(x=>x.EventSpikers).ThenInclude(x=>x.Spiker).ToListAsync();
             return View(events);
         }
 
@@ -74,7 +74,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Event dbevent = await _db.Events.FirstOrDefaultAsync(x => x.Id == id);
+            Event dbevent = await _db.Events.Include(x=>x.EventDetail).Include(x=>x.EventSpikers).ThenInclude(x=>x.Spiker).FirstOrDefaultAsync(x => x.Id == id);
             if (dbevent == null)
                 return BadRequest();
 
@@ -88,7 +88,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             if (id == null)
                 return NotFound();
-            Event dbevent = await _db.Events.FirstOrDefaultAsync(x => x.Id == id);
+            Event dbevent = await _db.Events.Include(x => x.EventDetail).Include(x => x.EventSpikers).ThenInclude(x => x.Spiker).FirstOrDefaultAsync(x => x.Id == id);
             if (dbevent == null)
                 return BadRequest();
 
@@ -121,6 +121,7 @@ namespace EduHome.Areas.Admin.Controllers
             dbevent.CreatedTime = events.CreatedTime;
             dbevent.StartTime = events.StartTime;
             dbevent.EndTime=events.EndTime;
+            dbevent.EventDetail.Description = events.EventDetail.Description;
 
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");

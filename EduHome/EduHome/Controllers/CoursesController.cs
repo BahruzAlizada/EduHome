@@ -41,5 +41,17 @@ namespace EduHome.Controllers
             return View(dbcourse);
         }
         #endregion
+
+        #region Search
+        public async Task<IActionResult> Search(string searchTerm)
+        {
+            List<Course> course = new List<Course>(); 
+
+            if (!string.IsNullOrEmpty(searchTerm))
+                course = await _db.Courses.Where(x => x.Name.Contains(searchTerm)).ToListAsync();
+
+            return PartialView("_courseSearchResult", course);
+        }
+        #endregion
     }
 }

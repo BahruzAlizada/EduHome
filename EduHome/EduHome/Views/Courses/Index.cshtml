@@ -27,13 +27,14 @@
                 </div>
                 <div class="course-form">
                     <form id="search"  method="get">
-                        <input type="search" placeholder="Search..." name="search" />
-                        <button type="submit">search</button>
+                        <input id="searchInput" type="search" placeholder="Search..." name="search" />
+                        @*<button type="submit">search</button>*@
                     </form>
+                   @* <div class="row" id="searchResult"></div>*@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="searchResult">
             @foreach (Course course in Model)
             {
                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -55,6 +56,7 @@
                 </div>
             }
         </div>
+        
         <div class="row">
             <div class="col-xs-12">
                 <div class="pagination">
@@ -72,4 +74,28 @@
 
 
 <!-- Course End -->
+
+@section Scripts{
+  
+    <script asp-append-version="true">
+        $("#searchInput").keyup(function () {
+            var searchTerm = $(this).val(); // Giriş alanındaki arama terimini al
+
+            // AJAX isteği gönder
+            $.ajax({
+                url: "/Course/Search/",
+                method: "get",
+                data:
+                {
+                    searchTerm: searchTerm 
+                },
+                success: function (result) {
+                    $("#searchResult").empty();
+                    $("#searchResult").html(result);
+                }
+            });
+        });
+    </script>
+
+}
 

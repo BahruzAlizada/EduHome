@@ -15,20 +15,24 @@ namespace EduHome.Controllers
             _db = db;
         }
 
+        #region Index
         public IActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region Detail
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
                 return NotFound();
-            Teacher dbteacher = await _db.Teachers.Include(x => x.TeacherDetail).FirstOrDefaultAsync(x=>x.Id==id);
+            Teacher dbteacher = await _db.Teachers.Include(x => x.TeacherDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbteacher == null)
                 return BadRequest();
 
             return View(dbteacher);
         }
+        #endregion
     }
 }

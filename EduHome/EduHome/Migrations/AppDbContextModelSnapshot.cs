@@ -304,6 +304,49 @@ namespace EduHome.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("EduHome.Models.EventDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId")
+                        .IsUnique();
+
+                    b.ToTable("EventDetails");
+                });
+
+            modelBuilder.Entity("EduHome.Models.EventSpiker", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpikerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("SpikerId");
+
+                    b.ToTable("EventSpikers");
+                });
+
             modelBuilder.Entity("EduHome.Models.Feedback", b =>
                 {
                     b.Property<int>("Id")
@@ -433,6 +476,27 @@ namespace EduHome.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("EduHome.Models.Spiker", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Spikers");
+                });
+
             modelBuilder.Entity("EduHome.Models.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -465,19 +529,46 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Communication")
+                        .HasColumnType("int");
+
                     b.Property<string>("Degree")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Design")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Development")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Faculty")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Hobby")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Innovation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Language")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamLeader")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -641,6 +732,36 @@ namespace EduHome.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("EduHome.Models.EventDetail", b =>
+                {
+                    b.HasOne("EduHome.Models.Event", "Event")
+                        .WithOne("EventDetail")
+                        .HasForeignKey("EduHome.Models.EventDetail", "EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("EduHome.Models.EventSpiker", b =>
+                {
+                    b.HasOne("EduHome.Models.Event", "Event")
+                        .WithMany("EventSpikers")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduHome.Models.Spiker", "Spiker")
+                        .WithMany("EventSpikers")
+                        .HasForeignKey("SpikerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("Spiker");
+                });
+
             modelBuilder.Entity("EduHome.Models.TeacherDetail", b =>
                 {
                     b.HasOne("EduHome.Models.Teacher", "Teacher")
@@ -711,6 +832,18 @@ namespace EduHome.Migrations
             modelBuilder.Entity("EduHome.Models.Course", b =>
                 {
                     b.Navigation("CourseDetail");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Event", b =>
+                {
+                    b.Navigation("EventDetail");
+
+                    b.Navigation("EventSpikers");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Spiker", b =>
+                {
+                    b.Navigation("EventSpikers");
                 });
 
             modelBuilder.Entity("EduHome.Models.Teacher", b =>
