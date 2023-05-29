@@ -20,12 +20,15 @@ namespace EduHome.Areas.Admin.Controllers
             _db = db;
         }
 
+        #region Index
         public async Task<IActionResult> Index()
         {
             List<Notice> notices = await _db.Notices.ToListAsync();
             return View(notices);
         }
+        #endregion
 
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -42,7 +45,9 @@ namespace EduHome.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
 
+        #region Update
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)
@@ -57,7 +62,7 @@ namespace EduHome.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Update(int? id,Notice notice)
+        public async Task<IActionResult> Update(int? id, Notice notice)
         {
             if (id == null)
                 return NotFound();
@@ -70,7 +75,9 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
+        #endregion
 
+        #region Detail
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
@@ -81,7 +88,9 @@ namespace EduHome.Areas.Admin.Controllers
 
             return View(dbnotice);
         }
+        #endregion
 
+        #region Activity
         public async Task<IActionResult> Activity(int? id)
         {
             if (id == null)
@@ -98,5 +107,6 @@ namespace EduHome.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
     }
 }
