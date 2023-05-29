@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Models
@@ -10,6 +11,7 @@ namespace EduHome.Models
         public string FullName { get; set; }
         public string Role { get; set; }
         public string Image { get; set; }
+        public bool IsDeactive { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
         public List<EventSpiker> EventSpikers { get; set; }

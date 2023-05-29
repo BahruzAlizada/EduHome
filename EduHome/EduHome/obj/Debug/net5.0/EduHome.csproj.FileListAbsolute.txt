@@ -531,3 +531,6 @@ C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Blog
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\Components\BlogDetailRight\Default.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Views\Shared\_courseSearchResult.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Teachers\Detail.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spikers\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spikers\Create.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spikers\Update.cshtml.g.cs

@@ -19,24 +19,14 @@ namespace EduHome.Controllers
         }
 
         #region Index
-        public async Task<IActionResult> Index(string search, int page = 1)
+        public async Task<IActionResult> Index( int page = 1)
         {
-            List<Event> events = new List<Event>();
-
             decimal take = 6;
             ViewBag.PageCount = Math.Ceiling((decimal)(await _db.Events.Where(x=>!x.IsDeactive).CountAsync()/take));
 
-            if (!string.IsNullOrEmpty(search))
-            {
-                events = await _db.Events.Where(x => x.Name.Contains(search)).ToListAsync();
+            List<Event> events = await _db.Events.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).Skip((page-1)*6).Take((int)take).ToListAsync();
                 return View(events);
-            }
-            else
-            {
-                events = await _db.Events.Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).Skip((page-1)*6).Take((int)take).ToListAsync();
-
-                return View(events);
-            }
+         
 
         }
         #endregion

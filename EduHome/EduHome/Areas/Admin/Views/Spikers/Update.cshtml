@@ -1,0 +1,43 @@
+﻿@model Spiker
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Update Spiker</h5>
+
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Photo" class="form-label">Photo</label>
+                        <input asp-for="Photo" accept="image/*" class="form-control" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="FullName" class="form-label">Full Name</label>
+                        <input asp-for="FullName" type="text" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Role" class="form-label">Role</label>
+                        <input asp-for="Role" type="text" class="form-control" />
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-secondary" asp-action="Index">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
