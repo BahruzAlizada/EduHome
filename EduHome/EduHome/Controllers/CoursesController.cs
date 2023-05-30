@@ -21,7 +21,9 @@ namespace EduHome.Controllers
         #region Index
         public async Task<IActionResult> Index(int page=1)
         {
+            ViewBag.CoursesCount = await _db.Courses.Where(x => !x.IsDeactive).CountAsync();
             decimal take = 6;
+            ViewBag.Take = (int)take;
             ViewBag.PageCount =Math.Ceiling((decimal)(await _db.Courses.Where(x=>!x.IsDeactive).CountAsync()/take));
 
             List<Course> course = await _db.Courses.Where(x=>!x.IsDeactive).OrderByDescending(x=>x.Id).Skip((page-1)*6).Take((int)take).ToListAsync();
@@ -39,6 +41,25 @@ namespace EduHome.Controllers
                 return BadRequest();
 
             return View(dbcourse);
+        }
+        #endregion
+
+        #region Activity
+        public async Task<IActionResult> Activity(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            Course dbcourse = await _db.Courses.FirstOrDefaultAsync(x => x.Id == id);
+            if (dbcourse == null)
+                return BadRequest();
+
+            if (dbcourse.IsDeactive)
+                dbcourse.IsDeactive = false;
+            else
+                dbcourse.IsDeactive = true;
+
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index", "Courses");
         }
         #endregion
 

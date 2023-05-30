@@ -24,12 +24,15 @@ namespace EduHome.Areas.Admin.Controllers
             _env = env;
         }
 
+        #region Index
         public async Task<IActionResult> Index()
         {
-            List<Course> courses = await _db.Courses.ToListAsync();
+            List<Course> courses = await _db.Courses.Include(x=>x.CourseDetail).ToListAsync();
             return View(courses);
         }
+        #endregion
 
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -40,7 +43,7 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(Course course)
         {
-            bool isExist = await _db.Courses.Include(x=>x.CourseDetail).AnyAsync(x => x.Name == course.Name);
+            bool isExist = await _db.Courses.Include(x => x.CourseDetail).AnyAsync(x => x.Name == course.Name);
             if (isExist)
             {
                 ModelState.AddModelError("Name", "This Course already exist !");
@@ -73,14 +76,16 @@ namespace EduHome.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
 
+        #region Update
         public async Task<IActionResult> Update(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            Course dbcourse = await _db.Courses.Include(x=>x.CourseDetail).FirstOrDefaultAsync(x=>x.Id == id);
+            Course dbcourse = await _db.Courses.Include(x => x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbcourse == null)
             {
                 return BadRequest();
@@ -92,20 +97,20 @@ namespace EduHome.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Update(int? id,Course course)
+        public async Task<IActionResult> Update(int? id, Course course)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            Course dbcourse = await _db.Courses.Include(x=>x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
+            Course dbcourse = await _db.Courses.Include(x => x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
             if (dbcourse == null)
             {
                 return BadRequest();
             }
 
-            bool isExist = await _db.Courses.AnyAsync(x=>x.Name== course.Name && x.Id != id);
-            if(isExist)
+            bool isExist = await _db.Courses.AnyAsync(x => x.Name == course.Name && x.Id != id);
+            if (isExist)
             {
                 ModelState.AddModelError("Name", "This Course already exist !");
                 return View();
@@ -140,12 +145,12 @@ namespace EduHome.Areas.Admin.Controllers
             #endregion
 
             dbcourse.Name = course.Name;
-            dbcourse.Description=course.Description;
+            dbcourse.Description = course.Description;
 
             dbcourse.CourseDetail.AboutCourse = course.CourseDetail.AboutCourse;
             dbcourse.CourseDetail.Apply = course.CourseDetail.Apply;
             dbcourse.CourseDetail.Certification = course.CourseDetail.Certification;
-            dbcourse.CourseDetail.Starts= course.CourseDetail.Starts;
+            dbcourse.CourseDetail.Starts = course.CourseDetail.Starts;
             dbcourse.CourseDetail.Duration = course.CourseDetail.Duration;
             dbcourse.CourseDetail.ClassDuration = course.CourseDetail.ClassDuration;
             dbcourse.CourseDetail.SkillLevel = course.CourseDetail.SkillLevel;
@@ -156,7 +161,9 @@ namespace EduHome.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
 
+        #region Detail
         public async Task<IActionResult> Detail(int? id)
         {
             if (id == null)
@@ -164,36 +171,32 @@ namespace EduHome.Areas.Admin.Controllers
                 return NotFound();
             }
             Course dbcourse = await _db.Courses.Include(x => x.CourseDetail).FirstOrDefaultAsync(x => x.Id == id);
-            if(dbcourse== null)
+            if (dbcourse == null)
             {
                 return BadRequest();
             }
             return View(dbcourse);
         }
+        #endregion
 
+        #region Activity
         public async Task<IActionResult> Activity(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
             Course dbcourse = await _db.Courses.FirstOrDefaultAsync(x => x.Id == id);
             if (dbcourse == null)
-            {
                 return BadRequest();
-            }
 
             if (dbcourse.IsDeactive)
-            {
                 dbcourse.IsDeactive = false;
-            }
             else
-            {
                 dbcourse.IsDeactive = true;
-            }
+
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        #endregion
 
     }
 }

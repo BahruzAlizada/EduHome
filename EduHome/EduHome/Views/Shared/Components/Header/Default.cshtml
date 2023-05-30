@@ -42,6 +42,13 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (User.IsInRole("Admin"))
+                                        {
+                                            <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a></li>
+                                        }
+                                    }
                                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                                     <li><a asp-controller="About" asp-action="Index">About</a></li>
                                     <li><a asp-controller="Courses" asp-action="Index">Courses</a></li>

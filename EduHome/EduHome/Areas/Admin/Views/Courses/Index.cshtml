@@ -19,6 +19,7 @@
                     <tr>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Price</th>
                         <th style="text-align:center;">Status</th>
                         <th style="text-align:right">Actions</th>
                     </tr>
@@ -35,6 +36,8 @@
                             <td>
                                 <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Name</strong>
                             </td>
+
+                            <td>@item.CourseDetail.CourseFee$</td>
 
                             <td style="text-align:center;">
                                 @if (item.IsDeactive)

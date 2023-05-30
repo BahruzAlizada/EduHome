@@ -16,6 +16,16 @@
     </div>
 </div>
 <!-- Banner Area End -->
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <a style="background-color:red;color:white;padding:4px;6px;border-radius:6px;" asp-route-id="@Model.Id" asp-action="Activity">Deactivate the Course</a>
+                <a style="background-color:yellow;color:white;padding:4px;6px;border-radius:6px;" asp-route-id="@Model.Id" asp-area="Admin" asp-controller="Courses" asp-action="Update">Update the Course</a>
+    }
+}
+
 <!-- Blog Start -->
 <div class="courses-details-area blog-area pt-150 pb-140">
     <div class="container">

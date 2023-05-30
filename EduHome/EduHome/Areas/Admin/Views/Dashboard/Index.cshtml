@@ -1,3 +1,56 @@
-﻿<p>Blogs Count - @ViewBag.BlogsCount</p>
-<p>Courses Count - @ViewBag.CoursesCount</p>
-<P>Teachers Count - @ViewBag.TeachersCount</P>
+﻿
+<div class="row">
+    <div class="col-6">
+        <div id="chartContainer"></div>
+    </div>
+    <div class="col-6">
+        <div id="charttContainer"></div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Count'],
+                ['Active Blogs', @ViewBag.BlogsCount],
+                ['Deactive Blogs', @ViewBag.DeactiveBlogsCount]
+            ]);
+
+            var options = {
+                title: 'Blog Chart',
+                is3D: true
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartContainer'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Count'],
+                ['Active Courses', @ViewBag.CoursesCount],
+                ['Deactive Courses', @ViewBag.DeactiveCoursesCount]
+            ]);
+
+            var options = {
+                title: 'Courses Chart',
+                is3D: true
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('charttContainer'));
+            chart.draw(data, options);
+        }
+    </script>
+}

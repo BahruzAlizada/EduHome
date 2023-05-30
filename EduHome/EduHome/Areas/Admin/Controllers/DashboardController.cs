@@ -21,8 +21,10 @@ namespace EduHome.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.BlogsCount = await _db.Blogs.Where(x => !x.IsDeactive).CountAsync();
+            ViewBag.DeactiveBlogsCount = await _db.Blogs.Where(x => x.IsDeactive).CountAsync();
+
             ViewBag.CoursesCount = await _db.Courses.Where(x => !x.IsDeactive).CountAsync();
-            ViewBag.TeachersCount = await _db.Teachers.Where(x => !x.IsDeactive).CountAsync();
+            ViewBag.DeactiveCoursesCount = await _db.Courses.Where(x => x.IsDeactive).CountAsync();
             return View();
         }
     }
