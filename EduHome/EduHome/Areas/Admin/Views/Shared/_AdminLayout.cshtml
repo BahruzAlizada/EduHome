@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TooGoo Admin</title>
+    <title>EduHome - Admin Panel</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/Admin/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/Admin/vendors/base/vendor.bundle.base.css">
@@ -196,12 +196,19 @@
                         </div>
                     </li>
 
-                    @*<li class="nav-item">
-                        <a class="nav-link" href="pages/forms/basic_elements.html">
-                            <i class="mdi mdi-view-headline menu-icon"></i>
-                            <span class="menu-title">Form elements</span>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Employes" asp-action="Index">
+                            <i class="mdi mdi-account-card-details menu-icon"></i>
+                            <span class="menu-title">Employes</span>
                         </a>
-                    </li>*@
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Positions" asp-action="Index">
+                            <i class="mdi mdi-book-open menu-icon"></i>
+                            <span class="menu-title">Positions</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="pages/charts/chartjs.html">

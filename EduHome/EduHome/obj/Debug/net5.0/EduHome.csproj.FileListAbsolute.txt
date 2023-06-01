@@ -534,3 +534,8 @@ C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admi
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spikers\Index.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spikers\Create.cshtml.g.cs
 C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Spikers\Update.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Positions\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Positions\Create.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Positions\Update.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Employes\Index.cshtml.g.cs
+C:\Users\Esma\Desktop\EduHomee\EduHome\EduHome\obj\Debug\net5.0\Razor\Areas\Admin\Views\Employes\Create.cshtml.g.cs

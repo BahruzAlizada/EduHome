@@ -271,6 +271,54 @@ namespace EduHome.Migrations
                     b.ToTable("CourseDetails");
                 });
 
+            modelBuilder.Entity("EduHome.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Brith")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsMan")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("EduHome.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -428,6 +476,28 @@ namespace EduHome.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Notices");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Position", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeactive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PositionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Salary")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("EduHome.Models.Service", b =>
@@ -735,6 +805,17 @@ namespace EduHome.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("EduHome.Models.Employee", b =>
+                {
+                    b.HasOne("EduHome.Models.Position", "Position")
+                        .WithMany("Employee")
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
             modelBuilder.Entity("EduHome.Models.EventDetail", b =>
                 {
                     b.HasOne("EduHome.Models.Event", "Event")
@@ -842,6 +923,11 @@ namespace EduHome.Migrations
                     b.Navigation("EventDetail");
 
                     b.Navigation("EventSpikers");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Position", b =>
+                {
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("EduHome.Models.Spiker", b =>

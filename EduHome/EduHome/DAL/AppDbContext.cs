@@ -28,6 +28,8 @@ namespace EduHome.DAL
         public DbSet<EventDetail> EventDetails { get; set; }
         public DbSet<EventSpiker> EventSpikers { get; set; }
         public DbSet<Spiker> Spikers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Position> Positions { get; set; }
 
     }
 }
