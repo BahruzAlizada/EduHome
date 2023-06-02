@@ -18,7 +18,9 @@
                     <tr>
                         <th>Full Name</th>
                         <th>Email</th>
+                        <th>Phone</th>
                         <th>Birth</th>
+                        <th>Start</th>
                         <th>Gender</th>
                         <th>Position</th>
                         <th>Salary</th>
@@ -31,15 +33,13 @@
                     {
                         <tr>
                             
-
                             <td>
                                 <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Name @item.Surname</strong>
                             </td>
-
                             <td>@item.Email</td>
-
-                            <th>@item.Brith.ToString("dd MMMM, yyyy")</th>
-
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.Brith.ToString("dd MMMM, yyyy")</td>
+                            <td>@item.CreatedTime.ToString("dd MMMM, yyyy")</td>
                             <td>
                                 @if(item.IsMan){
                                     <span>Male</span>
@@ -49,11 +49,8 @@
                                    <span>Female</span>
                                 }                             
                             </td>
-
                             <td>@item.Position.PositionName</td>
-
                             <td>@item.Position.Salary</td>
-
                             <td style="text-align:center;">
                                 @if (item.IsDeactive)
                                 {
@@ -68,8 +65,8 @@
 
                             <td>
                                 <div style="display:flex;justify-content:flex-end">
-                                    @* <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-warning rounded-pill text-white" style="margin-right:10px">Detail</a>*@
-                                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-info rounded-pill text-white" style="margin-right:10px">Update</a>
+@*                                    <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-warning rounded-pill text-white" style="margin-right:10px">Detail</a>
+*@                                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-info rounded-pill text-white" style="margin-right:10px">Update</a>
                                     @if (item.IsDeactive)
                                     {
                                         <a asp-action="Activity" asp-route-id="@item.Id" class="btn btn-success rounded-pill text-white" style="margin-right:10px;width:118px;">Activate</a>

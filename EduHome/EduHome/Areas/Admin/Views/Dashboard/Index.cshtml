@@ -1,17 +1,40 @@
-﻿
+﻿<div class="row">
+    <div class="col-6">
+
+    </div>
+
+    <div class="col-6">
+
+    </div>
+
+</div>
+
+
 <div class="row">
     <div class="col-6">
         <div id="chartContainer"></div>
     </div>
+
     <div class="col-6">
         <div id="charttContainer"></div>
     </div>
+</div>
+
+<div style="padding:15px 0px;" class="row">
+    
+        <div class="col-6">
+            <div id="PositionContainer"></div>
+        </div>
+        <div class="col-6">
+            @ViewBag.TotalSalary
+        </div>
 </div>
 
 
 
 @section Scripts{
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+
     <script>
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
@@ -50,6 +73,27 @@
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('charttContainer'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Count'],
+                ['Drector', @ViewBag.DrectorCount],
+                ['Manager', @ViewBag.ManagerCount]
+            ]);
+
+            var options = {
+                title: 'Position Chart',
+                is3D: true
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('PositionContainer'));
             chart.draw(data, options);
         }
     </script>

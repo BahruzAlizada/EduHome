@@ -1,0 +1,42 @@
+﻿@model Cost
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Update Cost</h5>
+
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3 form-group">
+                        <label asp-for="Costs" class="form-label">Costs</label>
+                        <input asp-for="Costs" class="form-control" />
+                        <span asp-validation-for="Costs" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="CostDescription" class="form-label">Cost Description</label>
+                        <textarea asp-for="CostDescription" class="form-control"></textarea>
+                        <span asp-validation-for="CostDescription" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-secondary" asp-action="Index">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/vendor/jquery-1.12.0.min.js"></script>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+

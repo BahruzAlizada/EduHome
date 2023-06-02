@@ -30,6 +30,8 @@ namespace EduHome.DAL
         public DbSet<Spiker> Spikers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Position> Positions { get; set; }
+        public DbSet<Cost> Costs { get; set; }
+        public DbSet<Profit> Profits { get; set; }
 
     }
 }

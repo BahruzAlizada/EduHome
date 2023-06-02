@@ -26,9 +26,7 @@ namespace EduHome.Models
         public bool IsMan { get; set; }
         public bool IsDeactive { get; set; }
         public Position Position { get; set; }
-        public int PositionId { get; set; }
-
+        public int PositionId { get; set; }    
+        }
     }
 
-   
-}
