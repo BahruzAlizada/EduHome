@@ -1,100 +1,42 @@
-﻿<div class="row">
-    <div class="col-6">
-
-    </div>
-
-    <div class="col-6">
-
-    </div>
-
-</div>
-
+﻿@model Cash
 
 <div class="row">
-    <div class="col-6">
-        <div id="chartContainer"></div>
-    </div>
+	<div class="col-12">
 
-    <div class="col-6">
-        <div id="charttContainer"></div>
-    </div>
+		<div class="card text-center">
+			<div class="card-header">CASH</div>
+			<div class="card-body">
+				<p class="card-text">By - @Model.By</p>
+				<p class="card-text">Description - @Model.Description</p>
+				<p class="card-text">Time - @Model.CreatedTime</p>
+				<p class="card-text">Amount - @Model.LastModifiedMoney</p>
+				<p class="btn btn-primary">@Model.Balance$</p>
+			</div>
+		</div>
+
+	</div>
 </div>
 
-<div style="padding:15px 0px;" class="row">
-    
-        <div class="col-6">
-            <div id="PositionContainer"></div>
-        </div>
-        <div class="col-6">
-            @ViewBag.TotalSalary
-        </div>
+<div class="row" style="padding:50px 0">
+	<div class="col-3">
+		<div style="background-color:blue; border-radius:5px;">
+			<h3 style="text-align:center;color:white;">Salary</h3>
+			<h6 style="text-align:center;color:white;">@ViewBag.TotalSalary$</h6>
+		</div>
+	</div>
+
+	<div class="col-3">
+		<div style="background-color:red; border-radius:5px;">
+			<h3 style="text-align:center;color:white;">Cost</h3>
+			<h6 style="text-align:center;color:white;">@ViewBag.TotalCost$</h6>
+		</div>
+	</div>
+
+	<div class="col-3">
+		<div style="background-color:green; border-radius:5px;">
+			<h3 style="text-align:center;color:white;">Profit</h3>
+			<h6 style="text-align:center;color:white;">@ViewBag.TotalProfit$</h6>
+		</div>
+	</div>
 </div>
 
-
-
-@section Scripts{
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <script>
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Status', 'Count'],
-                ['Active Blogs', @ViewBag.BlogsCount],
-                ['Deactive Blogs', @ViewBag.DeactiveBlogsCount]
-            ]);
-
-            var options = {
-                title: 'Blogs Chart',
-                is3D: true
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('chartContainer'));
-            chart.draw(data, options);
-        }
-    </script>
-
-    <script>
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Status', 'Count'],
-                ['Active Courses', @ViewBag.CoursesCount],
-                ['Deactive Courses', @ViewBag.DeactiveCoursesCount]
-            ]);
-
-            var options = {
-                title: 'Courses Chart',
-                is3D: true
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('charttContainer'));
-            chart.draw(data, options);
-        }
-    </script>
-
-    <script>
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Status', 'Count'],
-                ['Drector', @ViewBag.DrectorCount],
-                ['Manager', @ViewBag.ManagerCount]
-            ]);
-
-            var options = {
-                title: 'Position Chart',
-                is3D: true
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('PositionContainer'));
-            chart.draw(data, options);
-        }
-    </script>
-}

@@ -19,33 +19,47 @@ namespace EduHome.Areas.Admin.Controllers
         {
             _db = db;
         }
+		  
+		#region Index
+		public async Task<IActionResult> Index()
+		{
+			#region Profit
+			List<Profit> profits = await _db.Profits.ToListAsync();
+			int totalProfit = 0;
+			foreach (var item in profits)
+			{
+				totalProfit += item.Profitt;
+			}
+			ViewBag.TotalProfit = totalProfit;
+			#endregion
 
-        public async Task<IActionResult> Index()
-        {
-            ViewBag.BlogsCount = await _db.Blogs.Where(x => !x.IsDeactive).CountAsync();
-            ViewBag.DeactiveBlogsCount = await _db.Blogs.Where(x => x.IsDeactive).CountAsync();
+			#region Cost
+			List<Cost> cost = await _db.Costs.ToListAsync();
+			int totalCost = 0;
+			foreach (var item in cost)
+			{
+				totalCost += item.Costs;
+			}
+			ViewBag.TotalCost = totalCost;
+			#endregion
 
-            ViewBag.CoursesCount = await _db.Courses.Where(x => !x.IsDeactive).CountAsync();
-            ViewBag.DeactiveCoursesCount = await _db.Courses.Where(x => x.IsDeactive).CountAsync();
+			#region Salary
+			int totalsalary = 0;
+			List<Employee> employees = await _db.Employees.Where(x => !x.IsDeactive).Include(x => x.Position).ToListAsync();
+			foreach (var item in employees)
+			{
+				totalsalary += item.Position.Salary;
+			}
+			ViewBag.TotalSalary = totalsalary;
+			#endregion
 
-            ViewBag.DrectorCount = await _db.Employees.Include(x => x.Position).Where(x => x.Position.Id == 1).CountAsync();
-            ViewBag.ManagerCount = await _db.Employees.Include(x => x.Position).Where(x => x.Position.Id == 2).CountAsync(); 
-            return View();
-        }
+			#region Cash
 
-        //#region TotalSalary
-        //public async Task<int> TotalSalaryAsync()
-        //{
-        //    int totalsalary = 0;
-        //    List<Employee> employees = await _db.Employees.Where(x => !x.IsDeactive).Include(x => x.Position).ToListAsync();
-        //    foreach (var item in employees)
-        //    {
-        //        totalsalary += item.Position.Salary;
-        //    }
-        //    return totalsalary;
-        //}
-        //#endregion
-
-
-    }
+			Cash cash = await _db.Cashs.FirstOrDefaultAsync();
+			cash.Balance -= totalsalary;
+			#endregion
+			return View(cash);
+		}
+		#endregion
+	}
 }

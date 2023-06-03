@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -53,49 +54,20 @@ namespace EduHome.Areas.Admin.Controllers
                 ModelState.AddModelError("Profitt", "This is wrong");
                 return View();
             }
-            profit.By = User.Identity.Name;
+
+			profit.By = User.Identity.Name;
+
+			Cash cash = await _db.Cashs.FirstOrDefaultAsync();
+            cash.Balance += profit.Profitt;
+            cash.Description = profit.Description;
+            cash.By = profit.By;
+            cash.CreatedTime = profit.CreatedTime;
+            cash.LastModifiedMoney = profit.Profitt;
+            
             await _db.Profits.AddAsync(profit);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-        #endregion
-
-        #region Update
-        public async Task<IActionResult> Update(int? id)
-        {
-            if (id == null)
-                return NotFound();
-            Profit dbprofit = await _db.Profits.FindAsync(id);
-            if (dbprofit == null)
-                return BadRequest();
-
-            return View(dbprofit);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Update(int? id, Profit profit)
-        {
-            if (id == null)
-                return NotFound();
-            Profit dbprofit = await _db.Profits.FindAsync(id);
-            if (dbprofit == null)
-                return BadRequest();
-
-            bool isExist = await _db.Profits.AnyAsync(x => x.Profitt <= 0);
-            if (isExist)
-            {
-                ModelState.AddModelError("Profitt", "This is wrong");
-                return View();
-            }
-            profit.By = User.Identity.Name;
-            dbprofit.Profitt = profit.Profitt;
-            dbprofit.Description = profit.Description;
-
-            await _db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-        #endregion
+        #endregion   
     }
 }

@@ -3,6 +3,7 @@ using EduHome.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace EduHome.Areas.Admin.Controllers
             ViewBag.Positions = await _db.Positions.Where(x => !x.IsDeactive).ToListAsync();
             employee.PositionId = positionId;
 
-            await _db.Employees.AddAsync(employee);
+			await _db.Employees.AddAsync(employee);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

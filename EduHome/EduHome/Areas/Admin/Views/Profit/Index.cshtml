@@ -20,8 +20,7 @@
                         <th>Cost</th>
                         <th>Description</th>
                         <th>Time</th>
-                        <th>By</th>
-                        <th style="text-align:right">Actions</th>
+                        <th>By</th>  
                     </tr>
                 </thead>
                 <tbody>
@@ -34,13 +33,7 @@
 
                            <td>@item.Description</td>
                            <td>@item.CreatedTime</td>
-                           <td>@item.By</td>
-                            <td>
-                                <div style="display:flex;justify-content:flex-end">            
-                                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-info rounded-pill text-white" style="margin-right:10px">Update</a>
-                                   
-                                </div>
-                            </td>
+                           <td>@item.By</td>                  
                         </tr>
                     }
                 </tbody>

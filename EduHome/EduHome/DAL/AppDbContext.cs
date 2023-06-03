@@ -32,6 +32,6 @@ namespace EduHome.DAL
         public DbSet<Position> Positions { get; set; }
         public DbSet<Cost> Costs { get; set; }
         public DbSet<Profit> Profits { get; set; }
-
+        public DbSet<Cash> Cashs { get; set; }
     }
 }

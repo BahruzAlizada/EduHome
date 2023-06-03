@@ -198,6 +198,33 @@ namespace EduHome.Migrations
                     b.ToTable("BlogDetails");
                 });
 
+            modelBuilder.Entity("EduHome.Models.Cash", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Balance")
+                        .HasColumnType("int");
+
+                    b.Property<string>("By")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LastModifiedMoney")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cashs");
+                });
+
             modelBuilder.Entity("EduHome.Models.Cost", b =>
                 {
                     b.Property<int>("Id")
